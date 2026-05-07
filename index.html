@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Swara Food Tiffin Service</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Hind:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+  <style>
+    :root {
+      --saffron: #FF6B00;
+      --turmeric: #F5A623;
+      --leafy: #2E7D32;
+      --cream: #FFF8F0;
+      --brown: #4E342E;
+      --light-brown: #795548;
+      --white: #ffffff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Hind', sans-serif;
+      background: var(--cream);
+      color: var(--brown);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .brand {
+      font-family: 'Baloo 2', cursive;
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      background: var(--brown);
+      padding: 14px 0;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.25);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: auto;
+      padding: 0 20px;
+    }
+    .brand {
+      color: var(--turmeric);
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+    .brand span { color: var(--white); }
+    .nav-links a {
+      color: #ddd;
+      text-decoration: none;
+      margin-left: 22px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.25s;
+    }
+    .nav-links a:hover { color: var(--turmeric); }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #3E2723 0%, #6D4C41 40%, #FF6B00 100%);
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=1400&q=80") center/cover no-repeat;
+      opacity: 0.15;
+    }
+    /* Decorative circles */
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(245,166,35,0.25), transparent 70%);
+      top: -100px; right: -100px;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: var(--white);
+      max-width: 640px;
+    }
+    .marathi-tag {
+      display: inline-block;
+      background: var(--turmeric);
+      color: var(--brown);
+      padding: 6px 18px;
+      border-radius: 50px;
+      font-family: 'Baloo 2', cursive;
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 18px;
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100%{ transform:scale(1); }
+      50%{ transform:scale(1.05); }
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 14px;
+      text-shadow: 0 2px 14px rgba(0,0,0,0.4);
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--turmeric);
+    }
+    .hero-sub {
+      font-size: 1.15rem;
+      color: #f5ddc8;
+      margin-bottom: 10px;
+      font-weight: 400;
+    }
+    .marathi-quote {
+      font-family: 'Baloo 2', cursive;
+      font-size: 1.25rem;
+      color: var(--turmeric);
+      margin-bottom: 32px;
+      font-weight: 600;
+      text-shadow: 0 1px 6px rgba(0,0,0,0.3);
+    }
+    .hero-btns { display:flex; gap:14px; flex-wrap: wrap; }
+    .btn-main {
+      background: var(--saffron);
+      color: var(--white);
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-family: 'Baloo 2', cursive;
+      font-weight: 700;
+      font-size: 1.05rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 4px 18px rgba(255,107,0,0.45);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-main:hover { transform: translateY(-3px); box-shadow: 0 7px 22px rgba(255,107,0,0.55); color: var(--white); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      padding: 13px 30px;
+      border-radius: 50px;
+      font-family: 'Baloo 2', cursive;
+      font-weight: 700;
+      font-size: 1.05rem;
+      border: 2px solid rgba(255,255,255,0.6);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.15); color: var(--white); }
+
+    /* Price badge */
+    .price-badge {
+      position: absolute;
+      right: 60px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--turmeric);
+      color: var(--brown);
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Baloo 2', cursive;
+      font-weight: 800;
+      box-shadow: 0 8px 30px rgba(245,166,35,0.5);
+      animation: spin-slow 12s linear infinite;
+      z-index: 2;
+    }
+    .price-badge .only { font-size: 0.9rem; font-weight: 600; }
+    .price-badge .amount { font-size: 2.8rem; line-height: 1; }
+    .price-badge .per { font-size: 0.85rem; }
+    @keyframes spin-slow {
+      from { transform: translateY(-50%) rotate(0deg); }
+      to   { transform: translateY(-50%) rotate(360deg); }
+    }
+
+    /* ── TAGLINE STRIP ── */
+    .tagline-strip {
+      background: var(--saffron);
+      color: var(--white);
+      padding: 16px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .tagline-track {
+      display: inline-block;
+      animation: marquee 18s linear infinite;
+      font-family: 'Baloo 2', cursive;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── SECTION HEADINGS ── */
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      color: var(--brown);
+    }
+    .section-title span { color: var(--saffron); }
+    .divider {
+      width: 70px; height: 4px;
+      background: linear-gradient(to right, var(--saffron), var(--turmeric));
+      border-radius: 4px;
+      margin: 10px auto 0;
+    }
+
+    /* ── ABOUT ── */
+    .about-section { background: var(--white); padding: 80px 20px; }
+    .about-img-wrap {
+      position: relative;
+      display: inline-block;
+    }
+    .about-img-wrap img {
+      width: 100%; max-width: 460px;
+      border-radius: 24px;
+      box-shadow: 0 12px 40px rgba(78,52,46,0.2);
+      display: block;
+    }
+    .about-badge {
+      position: absolute;
+      bottom: -20px; right: -20px;
+      background: var(--saffron);
+      color: white;
+      border-radius: 16px;
+      padding: 14px 20px;
+      font-family: 'Baloo 2', cursive;
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: 0 6px 20px rgba(255,107,0,0.4);
+      text-align: center;
+      line-height: 1.4;
+    }
+    .about-text h2 { margin-bottom: 14px; }
+    .about-text p {
+      font-size: 1.05rem;
+      color: var(--light-brown);
+      line-height: 1.75;
+      margin-bottom: 12px;
+    }
+    .marathi-line {
+      font-family: 'Baloo 2', cursive;
+      font-size: 1.15rem;
+      color: var(--saffron);
+      font-weight: 700;
+      border-left: 4px solid var(--saffron);
+      padding-left: 14px;
+      margin: 16px 0;
+    }
+    .feature-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .pill {
+      background: var(--cream);
+      border: 1.5px solid var(--turmeric);
+      color: var(--brown);
+      border-radius: 50px;
+      padding: 6px 16px;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    /* ── MENU ── */
+    .menu-section { background: var(--cream); padding: 80px 20px; }
+    .menu-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 28px 20px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(78,52,46,0.1);
+      height: 100%;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .menu-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 34px rgba(255,107,0,0.2);
+    }
+    .menu-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(to right, var(--saffron), var(--turmeric));
+    }
+    .menu-icon {
+      font-size: 3rem;
+      margin-bottom: 14px;
+      display: block;
+    }
+    .menu-card h5 {
+      font-family: 'Baloo 2', cursive;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--brown);
+      margin-bottom: 6px;
+    }
+    .menu-card p {
+      font-size: 0.9rem;
+      color: var(--light-brown);
+    }
+
+    /* Big price card */
+    .price-card {
+      background: linear-gradient(135deg, var(--saffron), var(--turmeric));
+      border-radius: 24px;
+      padding: 44px 30px;
+      text-align: center;
+      color: var(--white);
+      box-shadow: 0 10px 40px rgba(255,107,0,0.45);
+      position: relative;
+      overflow: hidden;
+    }
+    .price-card::before {
+      content: "🍱";
+      position: absolute;
+      font-size: 180px;
+      opacity: 0.1;
+      right: -20px; bottom: -30px;
+    }
+    .price-card h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .price-card .big-price {
+      font-family: 'Baloo 2', cursive;
+      font-size: 5rem;
+      font-weight: 800;
+      line-height: 1;
+      text-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    }
+    .price-card .per-day {
+      font-size: 1rem;
+      opacity: 0.85;
+      margin-bottom: 18px;
+    }
+    .price-card .marathi-note {
+      font-family: 'Baloo 2', cursive;
+      font-size: 1.1rem;
+      font-weight: 600;
+      background: rgba(255,255,255,0.2);
+      border-radius: 10px;
+      padding: 10px 20px;
+      display: inline-block;
+    }
+
+    /* ── GALLERY ── */
+    .gallery-section { background: var(--white); padding: 80px 20px; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 18px;
+    }
+    .gallery-item {
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+    }
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+    .gallery-item:hover img { transform: scale(1.08); }
+    .gallery-item .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(78,52,46,0.7), transparent);
+      display: flex;
+      align-items: flex-end;
+      padding: 16px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .gallery-item:hover .overlay { opacity: 1; }
+    .gallery-item .overlay span {
+      color: white;
+      font-family: 'Baloo 2', cursive;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    /* ── WHY US ── */
+    .why-section { background: var(--brown); padding: 80px 20px; }
+    .why-section .section-title { color: var(--white); }
+    .why-section .section-title span { color: var(--turmeric); }
+    .why-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      padding: 30px 24px;
+      text-align: center;
+      height: 100%;
+      transition: background 0.3s;
+    }
+    .why-card:hover { background: rgba(255,255,255,0.12); }
+    .why-card .ico { font-size: 2.5rem; margin-bottom: 14px; }
+    .why-card h5 {
+      font-family: 'Baloo 2', cursive;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--turmeric);
+      margin-bottom: 8px;
+    }
+    .why-card p { color: #c9b09a; font-size: 0.95rem; line-height: 1.65; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonial-section { background: var(--cream); padding: 80px 20px; }
+    .testi-card {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 30px 26px;
+      box-shadow: 0 4px 20px rgba(78,52,46,0.09);
+      height: 100%;
+      position: relative;
+    }
+    .testi-card::before {
+      content: "❝";
+      position: absolute;
+      top: 16px; right: 22px;
+      font-size: 3rem;
+      color: var(--turmeric);
+      opacity: 0.35;
+      font-family: serif;
+    }
+    .testi-card .stars { color: var(--turmeric); font-size: 1.1rem; margin-bottom: 12px; }
+    .testi-card p { color: var(--light-brown); font-size: 0.97rem; line-height: 1.7; margin-bottom: 18px; }
+    .testi-card .marathi-review {
+      font-family: 'Baloo 2', cursive;
+      font-size: 1rem;
+      color: var(--saffron);
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    .testi-author { display: flex; align-items: center; gap: 12px; }
+    .testi-author .avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--saffron), var(--turmeric));
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-weight: 700; font-size: 1rem;
+      font-family: 'Baloo 2', cursive;
+    }
+    .testi-author .name { font-weight: 600; font-size: 0.95rem; color: var(--brown); }
+    .testi-author .place { font-size: 0.82rem; color: #aaa; }
+
+    /* ── CONTACT ── */
+    .contact-section { background: var(--white); padding: 80px 20px; }
+    .contact-card {
+      background: linear-gradient(135deg, var(--brown) 0%, #6D4C41 100%);
+      border-radius: 24px;
+      padding: 50px 40px;
+      color: var(--white);
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(78,52,46,0.35);
+    }
+    .contact-card h2 { font-size: 2rem; font-weight: 800; margin-bottom: 10px; }
+    .contact-card .sub { color: #c9b09a; margin-bottom: 30px; font-size: 1rem; }
+    .contact-info-row { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 30px; }
+    .contact-info-item {
+      display: flex; align-items: center; gap: 10px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50px;
+      padding: 10px 22px;
+    }
+    .contact-info-item .ico { font-size: 1.3rem; }
+    .contact-info-item span { font-size: 1rem; font-weight: 500; }
+    .btn-whatsapp {
+      background: #25D366;
+      color: white;
+      padding: 14px 36px;
+      border-radius: 50px;
+      font-family: 'Baloo 2', cursive;
+      font-weight: 700;
+      font-size: 1.05rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 4px 18px rgba(37,211,102,0.45);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-whatsapp:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(37,211,102,0.5); color: white; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #2C1810;
+      color: #c9b09a;
+      padding: 34px 20px;
+      text-align: center;
+    }
+    footer .brand { font-size: 1.4rem; }
+    footer p { font-size: 0.88rem; margin-top: 6px; opacity: 0.7; }
+    footer .heart { color: var(--saffron); }
+
+    /* ── FLOAT WHATSAPP ── */
+    .float-wa {
+      position: fixed;
+      bottom: 30px; right: 24px;
+      background: #25D366;
+      color: white;
+      width: 58px; height: 58px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 6px 20px rgba(37,211,102,0.5);
+      z-index: 999;
+      text-decoration: none;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%,100%{ transform: translateY(0); }
+      50%{ transform: translateY(-8px); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width: 768px){
+      .price-badge { display: none; }
+      .hero { min-height: 85vh; }
+      .contact-card { padding: 36px 20px; }
+    }
+    @media(max-width: 480px){
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="brand">Swara's <span>Kitchen</span> 🍱</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#menu">Menu</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">संपर्क</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-content" data-aos="fade-right">
+      <div class="marathi-tag">🌿 घरच्या चवीची हमी</div>
+      <h1>
+        <em>Swara's</em> Kitchen<br/>
+        Tiffin Service
+      </h1>
+      <p class="hero-sub">आईच्या हाताची चव, अगदी तुमच्या घरापर्यंत!</p>
+      <p class="marathi-quote">
+        "एकदा खाऊन तरी बघा — चव विसरणार नाही!" 😋
+      </p>
+      <div class="hero-btns">
+        <a href="#menu" class="btn-main">🍽️ Menu पाहा</a>
+        <a href="#contact" class="btn-outline">📞 Order करा</a>
+      </div>
+    </div>
+  </div>
+  <!-- Spinning price badge -->
+  <div class="price-badge" data-aos="zoom-in">
+    <span class="only">फक्त</span>
+    <span class="amount">₹60</span>
+    <span class="per">प्रति जेवण</span>
+  </div>
+</section>
+
+<!-- MARQUEE STRIP -->
+<div class="tagline-strip">
+  <div class="tagline-track">
+    🌶️ शुद्ध घरगुती जेवण &nbsp;•&nbsp; 🥗 No Preservatives &nbsp;•&nbsp; ❤️ बनवलेलं प्रेमाने &nbsp;•&nbsp; 🏠 Home Made &nbsp;•&nbsp; 🌶️ शुद्ध घरगुती जेवण &nbsp;•&nbsp; 🥗 No Preservatives &nbsp;•&nbsp; ❤️ बनवलेलं प्रेमाने &nbsp;•&nbsp; 🏠 Home Made &nbsp;•&nbsp;
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-5 text-center" data-aos="fade-right">
+        <div class="about-img-wrap" style="display:inline-block; position:relative;">
+          <img src="images/home-chef.png" alt="Homemade Tiffin Food" style="width:100%;max-width:460px;border-radius:24px;box-shadow:0 12px 40px rgba(78,52,46,0.2);display:block;"/>
+          <div class="about-badge">
+            ✅ 100%<br/>घरगुती जेवण<br/>रोज ताजे!
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7 about-text" data-aos="fade-left">
+        <p class="text-uppercase fw-semibold" style="color:var(--saffron);letter-spacing:2px;font-size:0.85rem;">आमच्याबद्दल</p>
+        <h2 class="section-title mb-2">प्रेमाने शिजवलेलं,<br/><span>मनापासून वाढलेलं</span> 🙏</h2>
+        <div class="divider" style="margin:10px 0 20px;"></div>
+
+        <p>
+        माझं नाव <strong>सरिता</strong> — आणि माझ्या मुलीचं नाव <strong>स्वरा</strong> आहे, म्हणून या Tiffin Service ला <strong>Swara's Kitchen</strong> हे नाव दिलं आहे.  
+        मी एकट्याने हे Tiffin Service चालवते. माझ्या हाताची चव आणि स्वच्छ, शुद्ध घरगुती जेवण तुमच्यापर्यंत पोहोचवणे हेच माझे ध्येय आहे.
+        </p>
+
+        <div class="marathi-line">
+          "आईच्या हाताची चव असते — तीच चव मी तुम्हाला देते!" 🍲
+        </div>
+
+        <p>रोज ताजे, स्वच्छ आणि पौष्टिक जेवण — कोणताही preservative नाही, कोणतीही भेसळ नाही. फक्त शुद्ध मसाले आणि प्रेमाचा स्पर्श!</p>
+
+        <div class="feature-pills">
+          <span class="pill">🌿 No Preservatives</span>
+          <span class="pill">🧼 Hygienic Kitchen</span>
+          <span class="pill">⏰ On-time Delivery</span>
+          <span class="pill">💚 Pure Veg</span>
+          <span class="pill">🔥 Freshly Cooked Daily</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section class="menu-section" id="menu">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <p class="text-uppercase fw-semibold" style="color:var(--saffron);letter-spacing:2px;font-size:0.85rem;">आजचं जेवण</p>
+      <h2 class="section-title">Tiffin मध्ये काय काय <span>मिळतं?</span></h2>
+      <div class="divider mx-auto mt-2"></div>
+    </div>
+
+    <div class="row g-4 mb-5">
+      <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="0">
+        <div class="menu-card">
+          <span class="menu-icon">🫓</span>
+          <h5>2 रोटी</h5>
+          <p>मऊ, गरम गव्हाच्या पोळ्या — रोज ताज्या!</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="80">
+        <div class="menu-card">
+          <span class="menu-icon">🥦</span>
+          <h5>भाजी</h5>
+          <p>रोज वेगळी सीझनल भाजी — मसाल्याने खुमासदार!</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="160">
+        <div class="menu-card">
+          <span class="menu-icon">🫘</span>
+          <h5>डाळ</h5>
+          <p>घट्ट, चवदार डाळ — फोडणीसहित!</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="240">
+        <div class="menu-card">
+          <span class="menu-icon">🍚</span>
+          <h5>भात</h5>
+          <p>मोकळा, शिजलेला तांदळाचा भात — एकदम परफेक्ट!</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="320">
+        <div class="menu-card">
+          <span class="menu-icon">🧆</span>
+          <h5>Snacks (पकोडा / मिठाई)</h5>
+          <p>कधी कुरकुरीत पकोडे, कधी गोड मिठाई — surprise असतो!</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="400">
+        <div class="menu-card">
+          <span class="menu-icon">🌶️</span>
+          <h5>पापड & लोणचे</h5>
+          <p>जेवणाची रंगत वाढवणारे — कुरकुरीत पापड आणि झणझणीत लोणचे!</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Big price display -->
+    <div class="row justify-content-center" data-aos="zoom-in">
+      <div class="col-lg-6 col-md-8">
+        <div class="price-card">
+          <h3>🎉 सर्व काही मिळतं फक्त</h3>
+          <div class="big-price">₹60</div>
+          <p class="per-day">प्रति जेवण / Per Tiffin</p>
+          <div class="marathi-note">
+            "इतकं स्वस्त, इतकं टेस्टी — यावर विश्वास ठेवणे कठीण आहे!" 🤩
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- GALLERY -->
+<section class="gallery-section" id="gallery">
+  <div class="container">
+
+    <div class="text-center mb-5" data-aos="fade-up">
+      <p class="text-uppercase fw-semibold"
+         style="color:var(--saffron);letter-spacing:2px;font-size:0.85rem;">
+         फोटो गॅलरी
+      </p>
+
+      <h2 class="section-title">
+        घरच्या स्वयंपाकाची <span>खरी चव</span> ❤️
+      </h2>
+
+      <div class="divider mx-auto mt-2"></div>
+    </div>
+
+    <div class="gallery-grid">
+
+      <!-- Woman Cooking -->
+      <div class="gallery-item" data-aos="fade-up" data-aos-delay="400">
+        <img src="images/home-chef.png" alt="Homemade Food Preparation"/>
+        <div class="overlay">
+          <span>प्रेमाने बनवलेले जेवण 👩‍🍳❤️</span>
+        </div>
+      </div>
+
+      <!-- Dal Rice -->
+      <div class="gallery-item" data-aos="fade-up" data-aos-delay="80">
+        <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&q=80"
+             alt="Thali"/>
+        <div class="overlay">
+        <span>घरगुती थाळी 🍽️✨</span>
+        </div>
+      </div>
+
+      <!-- Chapati -->
+      <div class="gallery-item" data-aos="fade-up" data-aos-delay="160">
+        <img src="images/roti.jpg" alt="Chapati"/>
+        <div class="overlay">
+          <span>गरम गरम पोळी 🫓🔥</span>
+        </div>
+      </div>
+
+      <!-- Papad -->
+      <div class="gallery-item" data-aos="fade-up" data-aos-delay="240">
+       <img src="images/bhaji.png" alt="Bhaji"/>
+        <div class="overlay">
+          <span>स्वादिष्ट भाजी 🥘😋</span>
+        </div>
+      </div>
+
+      <!-- Rice -->
+      <div class="gallery-item" data-aos="fade-up" data-aos-delay="160">
+        <img src="images/rice.jpg" alt="Rice"/>
+        <div class="overlay">
+          <span>सुगंधी भात 🍛🤍</span>
+        </div>
+      </div>
+
+      <!-- Dal -->
+      <div class="gallery-item" data-aos="fade-up" data-aos-delay="160">
+        <img src="images/dal.png" alt="Dal"/>
+        <div class="overlay">
+          <span>चविष्ट डाळ 🥣💛</span>
+        </div>
+      </div>
+
+      <!-- Veg Pulav -->
+      <div class="gallery-item" data-aos="fade-up" data-aos-delay="160">
+        <img src="images/veg_pulav.jpg" alt="Veg Pulav"/>
+        <div class="overlay">
+          <span>व्हेज पुलाव 🍲🌿</span>
+        </div>
+      </div>
+
+      <!-- Sweet -->
+      <div class="gallery-item" data-aos="fade-up" data-aos-delay="160">
+        <img src="images/sweet.png" alt="Sweet"/>
+        <div class="overlay">
+          <span>गोड पदार्थ 🍮✨</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- WHY US -->
+<section class="why-section" id="why">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <p class="text-uppercase fw-semibold" style="color:var(--turmeric);letter-spacing:2px;font-size:0.85rem;">आमची खासियत</p>
+      <h2 class="section-title">आम्हाला <span>का निवडाल?</span></h2>
+      <div class="divider mx-auto mt-2" style="background:linear-gradient(to right, var(--turmeric),var(--saffron));"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="why-card">
+          <div class="ico">🏠</div>
+          <h5>घरगुती चव</h5>
+          <p>बाहेरच्या जेवणात मिळत नाही ती माझ्या हाताची चव — आईसारखी, मनापासून बनवलेली!</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="why-card">
+          <div class="ico">💰</div>
+          <h5>परवडणारी किंमत</h5>
+          <p>फक्त ₹60 मध्ये संपूर्ण जेवण — रोटी, भाजी, डाळ, भात, snacks, पापड आणि लोणचे!</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="why-card">
+          <div class="ico">🌿</div>
+          <h5>शुद्ध आणि स्वच्छ</h5>
+          <p>कोणताही preservative नाही. रोज ताजे बनवलेले, स्वच्छ भांड्यांमध्ये packed केलेले!</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="why-card">
+          <div class="ico">⏰</div>
+          <h5>वेळेवर Delivery</h5>
+          <p>तुमचे जेवण वेळेत पोहोचणे हे माझे वचन आहे — कारण भूक थांबत नाही!</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="why-card">
+          <div class="ico">❤️</div>
+          <h5>एकट्याने बनवलेलं</h5>
+          <p>कारखान्यात नाही, माझ्या किचनमध्ये — स्वतःच्या हाताने, प्रेमाने बनवलेलं!</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="why-card">
+          <div class="ico">🥗</div>
+          <h5>Nutritious जेवण</h5>
+          <p>पौष्टिक, संतुलित आहार — कारण आरोग्य महत्त्वाचे आहे!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonial-section" id="testimonials">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <p class="text-uppercase fw-semibold" style="color:var(--saffron);letter-spacing:2px;font-size:0.85rem;">ग्राहकांचं म्हणणं</p>
+      <h2 class="section-title">त्यांनी <span>खाल्लं, त्यांनी सांगितलं</span> 💬</h2>
+      <div class="divider mx-auto mt-2"></div>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="testi-card">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p>Office lunch साठी रोज हे tiffin घेतो. इतकं चांगलं जेवण बाहेर कुठे मिळत नाही!</p>
+          <div class="marathi-review">"एकदम लाजवाब! 🙌"</div>
+          <div class="testi-author">
+            <div class="avatar">R</div>
+            <div>
+              <div class="name">Rahul Patil</div>
+              <div class="place">Mumbai</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="testi-card">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p>भाजी आणि डाळ इतकी छान बनवतात — आईच्या हाताची आठवण येते. ₹60 मध्ये हे मिळतं हे खरं वाटत नाही!</p>
+          <div class="marathi-review">"खाऊन मन भरलं! 😍"</div>
+          <div class="testi-author">
+            <div class="avatar">P</div>
+            <div>
+              <div class="name">Priya Deshmukh</div>
+              <div class="place">Mumbai</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="testi-card">
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p>पकोडे आणि पापड extra touch आहे! Snacks रोज वेगळे असतात — हे best part आहे. Highly recommended!</p>
+          <div class="marathi-review">"मस्त! एकदम मस्त! 🔥"</div>
+          <div class="testi-author">
+            <div class="avatar">A</div>
+            <div>
+              <div class="name">Amit Shinde</div>
+              <div class="place">Mumbai</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="contact-card" data-aos="zoom-in">
+      <h2>📞 आजच Order करा!</h2>
+      <p class="sub">
+        "देर मत करो — पेट की आवाज सुनो!" 😄<br/>
+        <span style="font-family:'Baloo 2',cursive;font-size:1.1rem;color:var(--turmeric);">एकदा खाऊन तरी बघा — चव विसरणार नाही! 🍱</span>
+      </p>
+
+      <div class="contact-info-row">
+        <div class="contact-info-item">
+          <span class="ico">📱</span>
+          <span>+91 7208497821</span>
+        </div>
+        <div class="contact-info-item">
+          <span class="ico">
+         <img 
+    src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
+    alt="WhatsApp" 
+    style="width:20px;height:20px;vertical-align:middle;"
+  >
+          </span>
+          <span>+91 9619765710</span>
+        </div>
+        <div class="contact-info-item">
+          <span class="ico">📍</span>
+          <span>Mumbai, Maharashtra</span>
+        </div>
+        <div class="contact-info-item">
+          <span class="ico">🕐</span>
+          <span>12pm – 2pm | 7pm – 9pm</span>
+        </div>
+      </div>
+
+      <button onclick="document.getElementById('orderModal').style.display='flex'" class="btn-whatsapp" style="border:none;">
+        💬 WhatsApp वर Order करा
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="brand">Swara's <span style="color:#c9b09a;">Kitchen</span> 🍱</div>
+  <p>बनवलेलं <span class="heart">❤️</span> ने | Mumbai, Maharashtra</p>
+  <p style="margin-top:6px;">"घरगुती जेवण, घरापर्यंत!" 🙏</p>
+</footer>
+
+<!-- Float WhatsApp -->
+<button onclick="document.getElementById('orderModal').style.display='flex'" class="float-wa" style="border:none;cursor:pointer;" title="WhatsApp वर Order करा">
+  💬
+</button>
+
+<!-- ORDER MODAL -->
+<div id="orderModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:9999;align-items:center;justify-content:center;padding:20px;">
+  <div style="background:#fff;border-radius:24px;padding:36px 30px;max-width:480px;width:100%;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.3);max-height:90vh;overflow-y:auto;">
+    <button onclick="closeModal()" style="position:absolute;top:14px;right:18px;background:none;border:none;font-size:1.5rem;cursor:pointer;color:#999;">✕</button>
+
+    <div style="text-align:center;margin-bottom:22px;">
+      <span style="font-size:2.2rem;">🍱</span>
+      <h3 style="font-family:'Baloo 2',cursive;font-weight:800;color:var(--brown);margin:6px 0 4px;">Order Details</h3>
+      <p style="color:#999;font-size:0.9rem;">माहिती भरा, आम्ही WhatsApp वर connect करतो!</p>
+    </div>
+
+    <div style="margin-bottom:14px;">
+      <label style="font-weight:600;font-size:0.9rem;color:var(--brown);display:block;margin-bottom:6px;">👤 तुमचं नाव *</label>
+      <input id="o_name" type="text" style="width:100%;padding:11px 14px;border:1.5px solid #ddd;border-radius:10px;font-size:0.95rem;outline:none;font-family:'Hind',sans-serif;" onfocus="this.style.borderColor='var(--saffron)'" onblur="this.style.borderColor='#ddd'"/>
+    </div>
+
+    <div style="margin-bottom:14px;">
+      <label style="font-weight:600;font-size:0.9rem;color:var(--brown);display:block;margin-bottom:6px;">📱 Mobile Number *</label>
+      <input id="o_phone" type="tel" placeholder="+91 98765 43210" style="width:100%;padding:11px 14px;border:1.5px solid #ddd;border-radius:10px;font-size:0.95rem;outline:none;font-family:'Hind',sans-serif;" onfocus="this.style.borderColor='var(--saffron)'" onblur="this.style.borderColor='#ddd'"/>
+    </div>
+
+    <div style="margin-bottom:14px;">
+      <label style="font-weight:600;font-size:0.9rem;color:var(--brown);display:block;margin-bottom:6px;">📍 Delivery Address *</label>
+      <textarea id="o_address" rows="2" placeholder="घराचा पत्ता / कामाचा पत्ता..." style="width:100%;padding:11px 14px;border:1.5px solid #ddd;border-radius:10px;font-size:0.95rem;outline:none;resize:none;font-family:'Hind',sans-serif;" onfocus="this.style.borderColor='var(--saffron)'" onblur="this.style.borderColor='#ddd'"></textarea>
+    </div>
+
+    <div style="margin-bottom:14px;">
+      <label style="font-weight:600;font-size:0.9rem;color:var(--brown);display:block;margin-bottom:6px;">🍽️ किती Tiffins? *</label>
+      <select id="o_qty" style="width:100%;padding:11px 14px;border:1.5px solid #ddd;border-radius:10px;font-size:0.95rem;outline:none;font-family:'Hind',sans-serif;background:#fff;">
+        <option value="">-- निवडा --</option>
+        <option>1 Tiffin</option>
+        <option>2 Tiffins</option>
+        <option>3 Tiffins</option>
+        <option>4 Tiffins</option>
+        <option>5+ Tiffins</option>
+      </select>
+    </div>
+
+    <div style="margin-bottom:14px;">
+      <label style="font-weight:600;font-size:0.9rem;color:var(--brown);display:block;margin-bottom:8px;">🕐 कधी हवं जेवण?</label>
+      <div style="display:flex;gap:10px;">
+        <label style="flex:1;cursor:pointer;">
+          <input type="radio" name="meal" value="दुपारचं जेवण (12–2pm)" style="display:none;" onchange="selectMeal(this)"/>
+          <div class="meal-opt" style="border:1.5px solid #ddd;border-radius:10px;padding:10px;text-align:center;font-size:0.9rem;font-weight:600;color:#888;transition:all 0.2s;">🌞 दुपार<br/><span style="font-size:0.78rem;font-weight:400;">12pm – 2pm</span></div>
+        </label>
+        <label style="flex:1;cursor:pointer;">
+          <input type="radio" name="meal" value="रात्रीचं जेवण (7–9pm)" style="display:none;" onchange="selectMeal(this)"/>
+          <div class="meal-opt" style="border:1.5px solid #ddd;border-radius:10px;padding:10px;text-align:center;font-size:0.9rem;font-weight:600;color:#888;transition:all 0.2s;">🌙 रात्र<br/><span style="font-size:0.78rem;font-weight:400;">7pm – 9pm</span></div>
+        </label>
+        <label style="flex:1;cursor:pointer;">
+          <input type="radio" name="meal" value="दोन्ही वेळ (दुपार + रात्र)" style="display:none;" onchange="selectMeal(this)"/>
+          <div class="meal-opt" style="border:1.5px solid #ddd;border-radius:10px;padding:10px;text-align:center;font-size:0.9rem;font-weight:600;color:#888;transition:all 0.2s;">🍱 दोन्ही<br/><span style="font-size:0.78rem;font-weight:400;">दोन्ही वेळ</span></div>
+        </label>
+      </div>
+    </div>
+
+    <div style="margin-bottom:22px;">
+      <label style="font-weight:600;font-size:0.9rem;color:var(--brown);display:block;margin-bottom:6px;">📝 काही खास सांगायचं? (optional)</label>
+      <input id="o_note" type="text" placeholder="उदा. कमी तिखट, जास्त डाळ..." style="width:100%;padding:11px 14px;border:1.5px solid #ddd;border-radius:10px;font-size:0.95rem;outline:none;font-family:'Hind',sans-serif;" onfocus="this.style.borderColor='var(--saffron)'" onblur="this.style.borderColor='#ddd'"/>
+    </div>
+
+    <div id="o_error" style="color:#e53935;font-size:0.85rem;margin-bottom:10px;display:none;">⚠️ कृपया सर्व * fields भरा.</div>
+
+    <button onclick="sendWhatsApp()" style="width:100%;background:#25D366;color:white;padding:14px;border-radius:50px;border:none;font-family:'Baloo 2',cursive;font-weight:700;font-size:1.05rem;cursor:pointer;box-shadow:0 4px 18px rgba(37,211,102,0.4);">
+      💬 WhatsApp वर पाठवा
+    </button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 700, once: true, offset: 60 });
+
+  function closeModal() {
+    document.getElementById('orderModal').style.display = 'none';
+  }
+  document.getElementById('orderModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  function selectMeal(radio) {
+    document.querySelectorAll('.meal-opt').forEach(el => {
+      el.style.borderColor = '#ddd';
+      el.style.background = '#fff';
+      el.style.color = '#888';
+    });
+    const opt = radio.closest('label').querySelector('.meal-opt');
+    opt.style.borderColor = 'var(--saffron)';
+    opt.style.background = '#FFF3E0';
+    opt.style.color = 'var(--brown)';
+  }
+
+function sendWhatsApp() {
+  const name    = document.getElementById('o_name').value.trim();
+  const phone   = document.getElementById('o_phone').value.trim();
+  const address = document.getElementById('o_address').value.trim();
+  const qty     = document.getElementById('o_qty').value;
+  const meal    = document.querySelector('input[name="meal"]:checked');
+  const note    = document.getElementById('o_note').value.trim();
+  const errEl   = document.getElementById('o_error');
+
+  if (!name || !phone || !address || !qty) {
+    errEl.style.display = 'block';
+    return;
+  }
+
+  errEl.style.display = 'none';
+
+  const mealVal = meal ? meal.value : 'सांगितले नाही';
+
+  // WhatsApp Message
+ const msg = `नमस्कार Swara Tiffin Service!
+
+*Thank You for showing interest in Swara's Kitchen*
+
+--------------------------------
+
+*Name:* ${name}
+
+*Mobile:* ${phone}
+
+*Address:* ${address}
+
+*Tiffins:* ${qty}
+
+*Time:* ${mealVal}
+
+${note ? `*Note:* ${note}` : ''}
+
+--------------------------------
+
+Please confirm the order`;
+
+  // OPEN WHATSAPP
+  const url = `https://wa.me/919619765710?text=${encodeURIComponent(msg)}`;
+
+  window.open(url, '_blank');
+}
+</script>
+</body>
+</html>
